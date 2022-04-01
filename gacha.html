@@ -2,24 +2,28 @@
 
 <html>
   <head>
+    <meta charset="utf-8">
+    <title>老婆的抽獎機
+      <link rel="icon" href="favicon.png" type="image/png">
+    </title>
     <table border="1">
       <tr>
-        <td id="td0">1</td>
-        <td id="td1">2</td>
-        <td id="td2">3</td>
-        <td id="td3">4</td>
-        <td id="td4">5</td>
+        <td id="td0">學餐的飯</td>
+        <td id="td1">學餐的麵</td>
+        <td id="td2">學餐滷味</td>
+        <td id="td3">鍋貼</td>
+        <td id="td4">麥片</td>
       </tr>
       <tr>
         <td id="td15">16</td>
         <td rowspan="3" colspan="3">
-          <input id="start" type="button" value="在玩一次！" />
+          <input id="start" type="button" value="在抽一次！" />
         </td>
-        <td id="td5">6</td>
+        <td id="td5">牛肉麵</td>
       </tr>
       <tr>
         <td id="td14">15</td>
-        <td id="td6">7</td>
+        <td id="td6"></td>
       </tr>
       <tr>
         <td id="td13">14</td>
@@ -53,7 +57,7 @@
       }
     </style>
   </head>
-/**
+<!--
 
                                                      __----~~~~~~~~~~~------___
                                     .  .   ~~//====......          __--~ ~~
@@ -75,7 +79,7 @@
                                        //.-~~~--\
                                 神獸保佑，程式碼沒Bug!
                                 
-*/
+-->
   <body>
     <script>
       function rand(min, max) {
@@ -98,7 +102,6 @@
       //按鈕功能還有防呆和重置歸零
       function gogoLuck() {
         console.log(num);
-        tds[num].innerHTML = num + 1;
         tds[num].style.backgroundColor = "#fff";
         timeGo = 500;
         count = 0;
@@ -132,7 +135,7 @@
         }
 
         if (maxNum == 0) {
-          tds[num].innerHTML = rand(50, 99) * 100;
+          tds[num].style.backgroundColor = "#ff1000";
           clearInterval(timeclock);
           start.addEventListener("click", gogoLuck, false);
           return;
