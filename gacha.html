@@ -6,37 +6,44 @@
     <title>老婆的抽獎機</title>
     <link rel="icon" href="./mrdestructoid.ico" type="image/x-icon" />
     <table border="1">
+      <p>只有3次機會 請好好把握0.0<br>抽到14 15 16 可以再抽一次0.0</p>
+      <p>✰早餐請直接問老公✰<br>之後"有可能"會推出</p>
       <tr>
         <td id="td0">學餐的飯</td>
         <td id="td1">學餐的麵</td>
-        <td id="td2">學餐滷味</td>
+        <td id="td2">問老公</td>
         <td id="td3">鍋貼</td>
         <td id="td4">麥片</td>
       </tr>
       <tr>
         <td id="td15">16</td>
         <td rowspan="3" colspan="3">
-          <input id="start" type="button" value="在抽一次！" />
+          <button id="start" type="submit">再抽一次！</button>
         </td>
         <td id="td5">牛肉麵</td>
       </tr>
       <tr>
         <td id="td14">15</td>
-        <td id="td6"></td>
+        <td id="td6">滿大碗</td>
       </tr>
       <tr>
         <td id="td13">14</td>
-        <td id="td7">8</td>
+        <td id="td7">學餐滷味</td>
       </tr>
       <tr>
-        <td id="td12">13</td>
-        <td id="td11">12</td>
-        <td id="td10">11</td>
-        <td id="td9">10</td>
-        <td id="td8">9</td>
+        <td id="td12">炒飯</td>
+        <td id="td11">海鮮湯麵</td>
+        <td id="td10">九龍城的麵</td>
+        <td id="td9">抱歉 重抽吧</td>
+        <td id="td8">咖哩飯</td>
       </tr>
     </table>
     <style>
+      p{
+        text-align: center;
+        color: aqua;
+      }
+
       table {
         margin: 100px auto;
       }
@@ -48,7 +55,7 @@
         text-align: center;
       }
 
-      input {
+      button {
         display: block;
         margin: auto;
         width: 100px;
@@ -94,17 +101,23 @@
       var count = 0;
       var start = document.getElementById("start");
       var timeGo = 500;
+      var clicked = 0;
       //這邊是建立所有id陣列
       for (let i = 0; i < 16; i++) {
         tds[i] = document.getElementById(`td${i}`);
       }
       //按鈕功能還有防呆和重置歸零
       function gogoLuck() {
+        if(clicked >= 3){
+          start.disabled = true;
+          start.innerText = "不能再抽囉";
+          return;
+        }
         console.log(num);
         tds[num].style.backgroundColor = "#fff";
         timeGo = 500;
         count = 0;
-        num = 0;
+        num = num + 1;
         maxNum = rand(48, 80);
         console.log(maxNum);
         init();
@@ -115,6 +128,7 @@
 
       //所有判斷等等功能在這邊
       function gogoBox(e) {
+        start.disabled = true;
         if (count < 9) {
           timeGo = timeGo - 50;
           //預計跑三次
@@ -134,7 +148,10 @@
         }
 
         if (maxNum == 0) {
+          start.disabled = false;
           tds[num].style.backgroundColor = "#ff1000";
+          clicked += 1;
+          if(num == 10 || num == 14 || num == 15 || num == 16) clicked -= 1;
           clearInterval(timeclock);
           start.addEventListener("click", gogoLuck, false);
           return;
