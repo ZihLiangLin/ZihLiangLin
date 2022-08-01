@@ -51,8 +51,11 @@ var ArMarkerControls= new THREEx.ArMarkerControls(ArToolkitContext, camera,{
 scene.visible = false;
 
 const texture = new THREE.TextureLoader().load( 'ChiSi.png' );
+	  
+let geometry = new THREE.PlaneGeometry(1, 1);
+if(_iOSDevice) geometry  = new THREE.PlaneGeometry(1, 1);
+else geometry = new THREE.PlaneGeometry(2, 2);
 
-const geometry = new THREE.PlaneGeometry(2, 2);	  
 const material = new THREE.MeshBasicMaterial( { map: texture } );
 const plane = new THREE.Mesh( geometry, material );
 plane.rotation.x = -Math.PI / 2;
