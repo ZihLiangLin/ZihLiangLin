@@ -52,7 +52,7 @@ const texture = new THREE.TextureLoader().load( 'ChiSi.png' );
 const geometry = new THREE.PlaneGeometry(2, 2);	  
 const material = new THREE.MeshBasicMaterial( { map: texture } );
 const plane = new THREE.Mesh( geometry, material );
-plane.rotation.x = Math.PI / 4;
+plane.rotation.x = -Math.PI / 4;
 plane.position.y = geometry.parameters.height / 2;
 scene.add( plane );
 
