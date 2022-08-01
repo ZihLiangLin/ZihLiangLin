@@ -10,6 +10,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js"></script>
 
   <script>
+let _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad/);
+console.log ('iOS: ' + _iOSDevice);
+	  
 const scene = new THREE.Scene();
 const camera = new THREE.Camera();
 scene.add(camera);
