@@ -66,7 +66,9 @@ function isOver() {
     }
   }
   if (Over) {
-    highest_score = score;
+    if(score > highest_score){
+      highest_score = score;
+    }
     ctx.fillStyle = "white";
     ctx.font = "50px Poppins";
     ctx.fillText("Game Over!", canvas.width / 2.75, canvas.height / 2 + 250);
