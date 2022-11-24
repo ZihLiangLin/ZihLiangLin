@@ -27,6 +27,7 @@ let xV = 0;
 let yV = 0;
 
 let score = 0;
+let highest_score = 0;
 
 function startGame() {
   snakePosition();
@@ -65,6 +66,7 @@ function isOver() {
     }
   }
   if (Over) {
+    highest_score = score;
     ctx.fillStyle = "white";
     ctx.font = "50px Poppins";
     ctx.fillText("Game Over!", canvas.width / 2.75, canvas.height / 2 + 250);
@@ -118,7 +120,7 @@ function drawApple() {
 
 function drawScore() {
   ctx.fillStyle = "white";
-  Score.innerText = "現在分數 : " + score.toString();
+  Score.innerText = "現在分數 : " + score.toString() + "          最高分數 : " + highest_score.toString();
 }
 
 function checkColli() {
@@ -172,7 +174,21 @@ function keyDown(event) {
 }
 function playAgain(event) {
   if (event.keyCode == 32) {
-    location.reload();
+    speed = 8;
+    tileCount = 40;
+    tileSize = canvas.width / tileCount - 2;
+    headX = 10;
+    headY = 10;
+    snakePart = [];
+    tailLen = 0;
+
+    appleX = 5;
+    appleY = 5;
+    xV = 0;
+    yV = 0;
+
+    score = 0;
+    startGame();
   }
 }
 
