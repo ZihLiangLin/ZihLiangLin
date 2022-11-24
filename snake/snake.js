@@ -190,7 +190,7 @@ function playAgain(event) {
     yV = 0;
 
     score = 0;
-    startGame();
+    location.reload();
   }
 }
 
