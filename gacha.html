@@ -105,12 +105,18 @@
       var start = document.getElementById("start");
       var timeGo = 500;
       var clicked = 0;
+      var clicked = 0;
       //這邊是建立所有id陣列
       for (let i = 0; i < 16; i++) {
         tds[i] = document.getElementById(`td${i}`);
       }
       //按鈕功能還有防呆和重置歸零
       function gogoLuck() {
+        if (clicked >= 3) {
+          start.disabled = true;
+          start.innerText = "不能再抽囉";
+          return;
+        }
         if (clicked >= 3) {
           start.disabled = true;
           start.innerText = "不能再抽囉";
@@ -131,6 +137,7 @@
 
       //所有判斷等等功能在這邊
       function gogoBox(e) {
+        start.disabled = true;
         start.disabled = true;
         if (count < 9) {
           timeGo = timeGo - 50;
